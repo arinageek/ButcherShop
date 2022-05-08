@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div th:each="m : ${meat}">
+    <a th:href="@{/shop/meat/{id}(id=${m.getId()})}" th:text="${m.getTitle()}">meat</a>
+</div>
+
+<br/>
+<hr/>
+
+</body>
+</html>
