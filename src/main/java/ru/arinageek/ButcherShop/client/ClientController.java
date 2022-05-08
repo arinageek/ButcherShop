@@ -36,7 +36,6 @@ public class ClientController {
 
     @PostMapping(path = "/new")
     public String addUser(@ModelAttribute("user") Client client) {
-        client.setAdmin(false);
         clientService.addUser(client);
         return "redirect:/users";
     }

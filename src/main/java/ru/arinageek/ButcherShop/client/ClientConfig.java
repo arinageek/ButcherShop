@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Configuration;
 public class ClientConfig {
 
     @Bean
-    CommandLineRunner userCommandLineRunner(ClientRepository repository) {
+    CommandLineRunner userCommandLineRunner(ClientService service) {
         return args -> {
-            Client client = new Client("Arina", "arina435@mail.ru");
-            repository.save(client);
+            Client client = new Client(1L,"Arina", "arina435@mail.ru");
+            service.addUser(client);
         };
     }
 }

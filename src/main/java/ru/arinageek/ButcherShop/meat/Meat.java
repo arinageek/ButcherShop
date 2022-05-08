@@ -1,6 +1,11 @@
 package ru.arinageek.ButcherShop.meat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import ru.arinageek.ButcherShop.cart.Cart;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table
@@ -20,6 +25,10 @@ public class Meat {
     private String title;
     private String description;
     private Double price;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "contents")
+    private Set<Cart> carts = new HashSet<>();
 
     public Meat() {
     }
