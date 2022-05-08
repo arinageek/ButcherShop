@@ -10,9 +10,6 @@ main {
     display: flex;
     flex-flow: row wrap;
 }
-.meat-card {
-    width: 300px;
-    height: 100px;
-    margin: 10px;
-    background-color: burlywood;
+h1{
+    text-align: center;
 }

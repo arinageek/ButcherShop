@@ -57,5 +57,11 @@ public class Cart {
 
     public void addMeat(Meat meat) {
         contents.add(meat);
+        meat.getCarts().add(this);
+    }
+
+    public void removeMeat(Meat meat) {
+        contents.remove(meat);
+        meat.getCarts().remove(this);
     }
 }

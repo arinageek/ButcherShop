@@ -32,6 +32,15 @@ public class CartController {
         Meat meat = meatService.getMeatById(meatId);
         cart.addMeat(meat);
         cartService.saveCart(cart);
-        return "redirect:/shop";
+        return "redirect:/cart";
+    }
+
+    @GetMapping("/removeMeat/{meatId}")
+    public String removeMeatFromCart(@PathVariable Long meatId) {
+        Cart cart = cartService.getCart();
+        Meat meat = meatService.getMeatById(meatId);
+        cart.removeMeat(meat);
+        cartService.saveCart(cart);
+        return "redirect:/cart";
     }
 }
