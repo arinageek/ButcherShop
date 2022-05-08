@@ -19,19 +19,19 @@ public class MeatController {
     @GetMapping
     public String getAllMeat(Model model) {
         model.addAttribute("meat", meatService.getAllMeat());
-        return "index";
+        return "showAllMeat";
     }
 
     @GetMapping(path = "/meat/{id}")
     public String getMeatById(@PathVariable("id") Long id, Model model) {
         model.addAttribute("meat", meatService.getMeatById(id));
-        return "show";
+        return "showMeat";
     }
 
     @GetMapping(path = "/meat/new")
     public String addMeat(Model model) {
         model.addAttribute("meat", new Meat());
-        return "new";
+        return "newMeat";
     }
 
     @PostMapping(path = "/meat/new")
