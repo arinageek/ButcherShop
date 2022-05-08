@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+body {
+    margin: 0px;
+    font-family: 'Lato', sans-serif;
+}
+main {
+    margin: 50px;
+}
+.meat-cards {
+    display: flex;
+    flex-flow: row wrap;
+}
+.meat-card {
+    width: 300px;
+    height: 100px;
+    margin: 10px;
+    background-color: burlywood;
+}
