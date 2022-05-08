@@ -27,7 +27,6 @@ public class ClientService {
     public Client getUserById(Long id) { return clientRepository.getById(id); }
 
     public void addUser(Client client) {
-        client.setAdmin(false);
         clientRepository.save(client);
 
         Cart cart = new Cart();
@@ -41,5 +40,9 @@ public class ClientService {
             throw new IllegalStateException("User with id " + id + " doesn't exist");
         }
         clientRepository.deleteById(id);
+    }
+
+    public Client getUserByEmail(String email) {
+        return clientRepository.getClientByEmail(email);
     }
 }

@@ -17,22 +17,22 @@ public class Client {
             generator = "user_sequence"
     )
     private Long id;
-    private Boolean isAdmin;
+    private Boolean isAdmin = false;
     private String name;
     private String email;
 
     public Client() {
     }
 
-    public Client(Long id, String name, String email) {
+    public Client(Long id, Boolean isAdmin, String name, String email) {
         this.id = id;
-        this.isAdmin = false;
+        this.isAdmin = isAdmin;
         this.name = name;
         this.email = email;
     }
 
-    public Client(String name, String email) {
-        this.isAdmin = false;
+    public Client(Boolean isAdmin, String name, String email) {
+        this.isAdmin = isAdmin;
         this.name = name;
         this.email = email;
     }

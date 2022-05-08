@@ -1,4 +1,4 @@
-package ru.arinageek.ButcherShop.client;
+package ru.arinageek.ButcherShop.session;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -7,13 +7,13 @@ import org.springframework.context.annotation.Configuration;
 import static ru.arinageek.ButcherShop.session.SessionService.ADMIN_ID;
 
 @Configuration
-public class ClientConfig {
+public class SessionConfig {
 
     @Bean
-    CommandLineRunner userCommandLineRunner(ClientService service) {
+    CommandLineRunner sessionCommandLineRunner(SessionRepository repository) {
         return args -> {
-            Client client = new Client(ADMIN_ID, true,"Arina", "arina435@mail.ru");
-            service.addUser(client);
+            Session session = new Session(ADMIN_ID);
+            repository.save(session);
         };
     }
 }

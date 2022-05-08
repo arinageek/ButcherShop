@@ -6,6 +6,13 @@
 </head>
 <body>
 
+<div>
+    <div th:switch="${client.getAdmin()}">
+        <p th:case="true">User is an administrator</p>
+        <p th:case="false">User is a client</p>
+    </div>
+</div>
+
 <div th:each="m : ${meat}">
     <a th:href="@{/shop/meat/{id}(id=${m.getId()})}" th:text="${m.getTitle()}">meat</a>
 </div>
