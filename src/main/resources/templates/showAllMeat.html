@@ -20,6 +20,9 @@
                     <a th:case="true">Logged in as an administrator</a>
                     <a th:case="false" th:text="${'Logged in as ' + client.email}"></a>
                 </li>
+                <li th:switch="${client.getAdmin()}" class="nav-item" style="margin-left: 10px;">
+                    <a href="/shop/meat/new" th:case="true">Add new meat</a>
+                </li>
             </ul>
             <a href="/cart" class="d-flex">Cart</a>
             <form class="d-flex" style="margin-left: 10px;">

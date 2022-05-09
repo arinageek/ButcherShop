@@ -39,6 +39,7 @@ public class MeatController {
     @GetMapping(path = "/meat/new")
     public String addMeat(Model model) {
         model.addAttribute("meat", new Meat());
+        model.addAttribute("client", sessionService.getCurrentUser());
         return "newMeat";
     }
 
