@@ -39,6 +39,14 @@
 
     <h1>Choose your meat!</h1>
 
+    <form th:method="POST" th:action="@{/shop/meat/filterPrice}" th:object="${filters}">
+        <div class="mb-2">
+            <label id="priceRangeLabel" for="priceRange" class="form-label" th:text="${filters.getMaxPrice() + '₽'}"></label>
+            <input th:field="*{maxPrice}" type="range" class="form-range" id="priceRange" min="0" max="2000" step="100" th:value="${filters.getMaxPrice()}" oninput="document.getElementById('priceRangeLabel').innerHTML = this.value + '₽'">
+        </div>
+        <button type="submit" class="btn btn-warning">Filter</button>
+    </form>
+
     <div th:class="meat-cards">
         <div th:each="m : ${meat}" class="card" style="width: 18rem; margin: 10px;">
             <img src="https://www.foodmanufacture.co.uk/var/wrbm_gb_food_pharma/storage/images/_aliases/wrbm_large/publications/food-beverage-nutrition/foodmanufacture.co.uk/article/2021/02/01/meat-trends-market-prospers-in-face-of-pandemic/12148503-4-eng-GB/Meat-trends-market-prospers-in-face-of-pandemic.jpg" class="card-img-top" alt="meat image">

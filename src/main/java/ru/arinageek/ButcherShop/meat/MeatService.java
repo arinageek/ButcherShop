@@ -35,4 +35,8 @@ public class MeatService {
         }
         meatRepository.deleteById(id);
     }
+
+    public List<Meat> getMeatWithPriceLessThen(Double price) {
+        return meatRepository.getMeatWithPriceLessThen(price);
+    }
 }

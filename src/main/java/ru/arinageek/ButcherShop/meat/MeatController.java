@@ -25,6 +25,15 @@ public class MeatController {
     @GetMapping
     public String getAllMeat(Model model) {
         model.addAttribute("meat", meatService.getAllMeat());
+        model.addAttribute("filters", new Filters());
+        model.addAttribute("client", sessionService.getCurrentUser());
+        return "showAllMeat";
+    }
+
+    @PostMapping(path = "/meat/filterPrice")
+    public String getMeatWithPriceLessThen(@ModelAttribute("filters") Filters filters, Model model) {
+        model.addAttribute("meat", meatService.getMeatWithPriceLessThen(filters.getMaxPrice()));
+        model.addAttribute("filters", filters);
         model.addAttribute("client", sessionService.getCurrentUser());
         return "showAllMeat";
     }
