@@ -32,6 +32,7 @@ public class MeatController {
     @GetMapping(path = "/meat/{id}")
     public String getMeatById(@PathVariable("id") Long id, Model model) {
         model.addAttribute("meat", meatService.getMeatById(id));
+        model.addAttribute("client", sessionService.getCurrentUser());
         return "showMeat";
     }
 
