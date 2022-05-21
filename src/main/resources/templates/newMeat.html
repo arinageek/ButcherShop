@@ -34,9 +34,16 @@
 <main>
     <h1>Add new meat to the menu!</h1>
     <form th:method="POST" th:action="@{/meat/new}" th:object="${meat}">
-        <div class="mb-3">
-            <label for="category" class="form-label">Enter category: </label>
-            <input type="text" th:field="*{category}" class="form-control" id="category" aria-describedby="category">
+        <div class="mb-3 form-floating">
+            <select class="form-select" id="floatingSelect" th:field="*{category}">
+                <option value="Pork" selected>Pork</option>
+                <option value="Beef">Beef</option>
+                <option value="Goat">Goat</option>
+                <option value="Lamb">Lamb</option>
+                <option value="Chicken">Chicken</option>
+                <option value="Turkey">Turkey</option>
+            </select>
+            <label for="floatingSelect">Enter category: </label>
         </div>
         <div class="mb-3">
             <label for="title" class="form-label">Enter title: </label>
