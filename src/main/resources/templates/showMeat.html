@@ -9,7 +9,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/shop">ButcherShop</a>
+        <a class="navbar-brand" href="/">ButcherShop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -36,12 +36,12 @@
         <div class="card" style="width: 30%;">
             <img src="https://www.foodmanufacture.co.uk/var/wrbm_gb_food_pharma/storage/images/_aliases/wrbm_large/publications/food-beverage-nutrition/foodmanufacture.co.uk/article/2021/02/01/meat-trends-market-prospers-in-face-of-pandemic/12148503-4-eng-GB/Meat-trends-market-prospers-in-face-of-pandemic.jpg" class="card-img-top" alt="meat image">
             <div class="card-body">
-                <h5 class="card-title"><a th:href="@{/shop/meat/{id}(id=${meat.getId()})}" th:text="${meat.getTitle()}">meat</a></h5>
+                <h5 class="card-title"><a th:href="@{/meat/{id}(id=${meat.getId()})}" th:text="${meat.getTitle()}">meat</a></h5>
                 <p class="card-text" th:text="${meat.getDescription()}"></p>
                 <p class="card-text" th:text="${'Category: ' + meat.getCategory()}"></p>
                 <p class="card-text" th:text="${'Price: ' + meat.getPrice() + '₽'}"></p>
                 <div th:switch="${client.getAdmin()}">
-                    <form th:case="true" th:method="POST" th:action="@{/shop/meat/delete/{id}(id=${meat.getId()})}">
+                    <form th:case="true" th:method="POST" th:action="@{/meat/delete/{id}(id=${meat.getId()})}">
                         <input type="submit" value="Delete" class="btn btn-danger"/>
                     </form>
                 </div>

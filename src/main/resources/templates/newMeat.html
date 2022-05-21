@@ -9,7 +9,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/shop">ButcherShop</a>
+        <a class="navbar-brand" href="/">ButcherShop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,7 +33,7 @@
 
 <main>
     <h1>Add new meat to the menu!</h1>
-    <form th:method="POST" th:action="@{/shop/meat/new}" th:object="${meat}">
+    <form th:method="POST" th:action="@{/meat/new}" th:object="${meat}">
         <div class="mb-3">
             <label for="category" class="form-label">Enter category: </label>
             <input type="text" th:field="*{category}" class="form-control" id="category" aria-describedby="category">

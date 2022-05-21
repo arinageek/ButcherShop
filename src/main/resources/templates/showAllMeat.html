@@ -10,7 +10,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/shop">ButcherShop</a>
+        <a class="navbar-brand" href="/">ButcherShop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,7 +21,7 @@
                     <a th:case="false" th:text="${'Logged in as ' + client.email}"></a>
                 </li>
                 <li th:switch="${client.getAdmin()}" class="nav-item" style="margin-left: 10px;">
-                    <a href="/shop/meat/new" th:case="true">Add new meat</a>
+                    <a href="/meat/new" th:case="true">Add new meat</a>
                 </li>
             </ul>
             <a href="/cart" class="d-flex">Cart</a>
@@ -39,7 +39,7 @@
 
     <h1>Choose your meat!</h1>
 
-    <form th:method="POST" th:action="@{/shop/meat/filterPrice}" th:object="${filters}">
+    <form th:method="POST" th:action="@{/meat/filterPrice}" th:object="${filters}">
         <div class="mb-2">
             <label id="priceRangeLabel" for="priceRange" class="form-label" th:text="${filters.getMaxPrice() + '₽'}"></label>
             <input th:field="*{maxPrice}" type="range" class="form-range" id="priceRange" min="0" max="2000" step="100" th:value="${filters.getMaxPrice()}" oninput="document.getElementById('priceRangeLabel').innerHTML = this.value + '₽'">
@@ -51,7 +51,7 @@
         <div th:each="m : ${meat}" class="card" style="width: 18rem; margin: 10px;">
             <img src="https://www.foodmanufacture.co.uk/var/wrbm_gb_food_pharma/storage/images/_aliases/wrbm_large/publications/food-beverage-nutrition/foodmanufacture.co.uk/article/2021/02/01/meat-trends-market-prospers-in-face-of-pandemic/12148503-4-eng-GB/Meat-trends-market-prospers-in-face-of-pandemic.jpg" class="card-img-top" alt="meat image">
             <div class="card-body">
-                <h5 class="card-title"><a th:href="@{/shop/meat/{id}(id=${m.getId()})}" th:text="${m.getTitle() + ' ' + m.getPrice() + '₽'}">meat</a></h5>
+                <h5 class="card-title"><a th:href="@{/meat/{id}(id=${m.getId()})}" th:text="${m.getTitle() + ' ' + m.getPrice() + '₽'}">meat</a></h5>
                 <p class="card-text" th:text="${m.getDescription()}"></p>
                 <a th:href="@{/cart/addMeat/{id}(id=${m.getId()})}" class="btn btn-primary">Add to cart</a>
             </div>

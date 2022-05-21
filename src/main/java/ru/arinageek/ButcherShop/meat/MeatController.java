@@ -10,7 +10,6 @@ import ru.arinageek.ButcherShop.session.SessionRepository;
 import ru.arinageek.ButcherShop.session.SessionService;
 
 @Controller
-@RequestMapping("/shop")
 public class MeatController {
 
     private final MeatService meatService;
@@ -55,13 +54,13 @@ public class MeatController {
     @PostMapping(path = "/meat/new")
     public String addMeat(@ModelAttribute("meat") Meat meat) {
         meatService.addMeat(meat);
-        return "redirect:/shop";
+        return "redirect:/";
     }
 
     @PostMapping(path = "/meat/delete/{id}")
     public String deleteMeat(@PathVariable("id") Long id) {
         meatService.deleteMeat(id);
-        return "redirect:/shop";
+        return "redirect:/";
     }
 
 }

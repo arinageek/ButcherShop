@@ -40,7 +40,7 @@ public class ClientController {
     @PostMapping(path = "/new")
     public String addUser(@ModelAttribute("user") Client client) {
         clientService.addUser(client);
-        return "redirect:/shop";
+        return "redirect:/";
     }
 
     @PostMapping(path = "/delete/{id}")
@@ -61,7 +61,7 @@ public class ClientController {
         if (client != null) {
             sessionService.logInWithUserId(client.getId());
         }
-        return "redirect:/shop";
+        return "redirect:/";
     }
 
 }
