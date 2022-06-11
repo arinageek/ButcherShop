@@ -33,8 +33,10 @@
         <h1>CART</h1>
 
         <div th:switch="${cart.getContents().isEmpty()}">
-            <div th:case="false" th:class="meat-cards">
-                <div th:each="meat : ${cart.getContents()}" class="card" style="width: 18rem; margin: 10px;">
+
+            <div th:case="false" style="text-align: center">
+                <div th:class="meat-cards">
+                    <div th:each="meat : ${cart.getContents()}" class="card" style="width: 18rem; margin: 10px;">
                     <img src="https://www.foodmanufacture.co.uk/var/wrbm_gb_food_pharma/storage/images/_aliases/wrbm_large/publications/food-beverage-nutrition/foodmanufacture.co.uk/article/2021/02/01/meat-trends-market-prospers-in-face-of-pandemic/12148503-4-eng-GB/Meat-trends-market-prospers-in-face-of-pandemic.jpg" class="card-img-top" alt="meat image">
                     <div class="card-body">
                         <h5 class="card-title"><a th:href="@{/meat/{id}(id=${meat.getId()})}" th:text="${meat.getTitle() + ' ' + meat.getPrice() + '₽'}">meat</a></h5>
@@ -42,10 +44,52 @@
                         <a th:href="@{/cart/removeMeat/{id}(id=${meat.getId()})}" class="btn btn-danger">Remove</a>
                     </div>
                 </div>
+                </div>
+                <br><br>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary order-btn" style="width: 50%; height: 50px" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Order now
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Create an order</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form th:method="POST" th:action="@{/cart/order}" th:object="${order}">
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email address</label>
+                                        <input th:field="*{email}" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">Delivery address</label>
+                                        <input th:field="*{address}" type="text" class="form-control" id="address">
+                                    </div>
+                                    <div class="mb-3">
+                                        <select th:field="*{time}" class="form-select" aria-label="Time selection">
+                                            <option value="no time chosen" selected>Choose delivery time</option>
+                                            <option value="09:00-12:00">09:00-12:00</option>
+                                            <option value="12:00-18:00">12:00-18:00</option>
+                                            <option value="18:00-23:00">18:00-23:00</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Order</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div th:case="true" style="font-size: 30px; text-align: center;">
                 <p>Your cart is empty :(</p>
             </div>
+
         </div>
     </main>
 

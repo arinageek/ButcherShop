@@ -25,8 +25,8 @@
                 </li>
             </ul>
             <a href="/cart" class="d-flex">Cart</a>
-            <form class="d-flex" style="margin-left: 10px;">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" style="margin-left: 10px;" th:method="POST" th:action="@{/meat/query}" th:object="${filters}">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" th:field="*{searchQuery}">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
             <a class="d-flex" href="/users/login" style="margin-left: 10px;">Log in</a>

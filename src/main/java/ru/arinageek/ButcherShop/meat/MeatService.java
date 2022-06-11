@@ -39,4 +39,6 @@ public class MeatService {
     public List<Meat> getMeatWithPriceLessThen(Double price) {
         return meatRepository.getMeatWithPriceLessThen(price);
     }
+
+    public List<Meat> getMeatMatchingQuery(String query) { return meatRepository.getMeatMatchingQuery(query); }
 }

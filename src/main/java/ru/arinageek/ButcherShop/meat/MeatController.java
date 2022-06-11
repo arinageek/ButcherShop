@@ -37,6 +37,14 @@ public class MeatController {
         return "showAllMeat";
     }
 
+    @PostMapping(path = "/meat/query")
+    public String getMeatMatchingQuery(@ModelAttribute("filters") Filters filters, Model model) {
+        model.addAttribute("meat", meatService.getMeatMatchingQuery(filters.getSearchQuery()));
+        model.addAttribute("filters", filters);
+        model.addAttribute("client", sessionService.getCurrentUser());
+        return "showAllMeat";
+    }
+
     @GetMapping(path = "/meat/{id}")
     public String getMeatById(@PathVariable("id") Long id, Model model) {
         model.addAttribute("meat", meatService.getMeatById(id));
@@ -61,6 +69,11 @@ public class MeatController {
     public String deleteMeat(@PathVariable("id") Long id) {
         meatService.deleteMeat(id);
         return "redirect:/";
+    }
+
+    @GetMapping(path = "/successPage")
+    public String showSuccessPage() {
+        return "orderAccepted";
     }
 
 }

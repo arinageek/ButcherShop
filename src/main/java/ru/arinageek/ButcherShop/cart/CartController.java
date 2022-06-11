@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.arinageek.ButcherShop.Order.Order;
 import ru.arinageek.ButcherShop.meat.Meat;
 import ru.arinageek.ButcherShop.meat.MeatService;
 
@@ -23,6 +24,7 @@ public class CartController {
     @GetMapping
     public String getCart(Model model) {
         model.addAttribute("cart", cartService.getCart());
+        model.addAttribute("order", new Order());
         return "showCart";
     }
 
@@ -42,5 +44,12 @@ public class CartController {
         cart.removeMeat(meat);
         cartService.saveCart(cart);
         return "redirect:/cart";
+    }
+
+    @PostMapping("/order")
+    public String createOrder(@ModelAttribute("order") Order order) {
+        order.setMeat(cartService.getCart().getContents());
+        cartService.sendOrderEmail(order);
+        return "redirect:/successPage";
     }
 }

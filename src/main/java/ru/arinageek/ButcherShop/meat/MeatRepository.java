@@ -12,4 +12,7 @@ public interface MeatRepository
 
     @Query("FROM Meat WHERE price < ?1")
     List<Meat> getMeatWithPriceLessThen(Double price);
+
+    @Query("FROM Meat WHERE title LIKE %:query%")
+    List<Meat> getMeatMatchingQuery(String query);
 }

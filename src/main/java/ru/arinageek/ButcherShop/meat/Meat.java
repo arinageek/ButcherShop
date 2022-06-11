@@ -27,7 +27,7 @@ public class Meat {
     private Double price;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "contents")
+    @ManyToMany(mappedBy = "contents", fetch = FetchType.EAGER)
     private Set<Cart> carts = new HashSet<>();
 
     public Meat() {
@@ -94,5 +94,17 @@ public class Meat {
 
     public void setCarts(Set<Cart> carts) {
         this.carts = carts;
+    }
+
+    @Override
+    public String toString() {
+        return "Meat{" +
+                "id=" + id +
+                ", category='" + category + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", carts=" + carts +
+                '}';
     }
 }
